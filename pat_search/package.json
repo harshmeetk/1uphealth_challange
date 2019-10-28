@@ -16,6 +16,7 @@
     "http-errors": "~1.6.3",
     "json-formatter": "^0.1.0",
     "json-formatter-js": "^2.2.1",
+    "mongoose": "^5.7.7",
     "morgan": "~1.9.1",
     "prettyjson": "^1.2.1"
   }
