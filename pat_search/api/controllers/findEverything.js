@@ -12,12 +12,11 @@ const findEverything = async (req, res, next)=>
 
         let result={};
         try{
-          let resultSet= await ResultList.findOne({accessToken: accessToken, patId: patId}, function (err,data)
+          let resultSet= await ResultList.findOne({accessToken: accessToken, patId: patId}, function (err)
           {
               if (err) console.log(err);
               // return data
           }).exec();
-            console.log("data from db",resultSet );
             if(resultSet)
           {
               result=resultSet._doc.patientData;
