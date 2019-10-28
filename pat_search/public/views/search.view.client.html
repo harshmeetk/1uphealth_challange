@@ -1,0 +1,47 @@
+<div class="container background">
+    <h1  ng-show="model.showResults">Results</h1>
+    <ul class="list-group selfScroll">
+        <div ng-repeat="item in model.patList" ng-bind-html="item" class="list-group-item" class="accordion" id="accordionExample">
+            <div class="card">
+                <div class="card-header" id="heading{{$index}}">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{$index}}" aria-expanded="true" aria-controls="collapse{{$index}}">
+                            {{$index}}
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapse{{$index}}" class="collapse show" aria-labelledby="heading{{$index}}" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <pre> {{item | json}} </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ul>
+    <div ng-show="model.error" class="alert alert-danger" role="alert">
+        {{model.error}}
+    </div>
+    <nav>
+        <ul class="pagination">
+            <li class="page-item" ng-click="model.dec()"><a class="page-link" href="">Previous</a></li>
+            <li class="page-item" ng-click="model.inc()"
+            ><a class="page-link" href="">Next</a></li>
+        </ul>
+    </nav>
+    <script>
+        //This is work around for calling angular ng-click from onclick
+        function tempFunction(word) {
+            //changing hte value of searchbar and binding it using angulatJS adn JQUERY
+            var input=$('#searchBar')
+            input.val(word);
+            input.trigger('change');
+            var scope = angular.element(document.getElementById(word)).scope();
+            scope.$apply(function () {
+                var a = {searchWord:word}
+                scope.model.search(a);
+            });
+        }
+    </script>
+</div>
+
