@@ -6,25 +6,21 @@ const findEverything = async (req, res, next)=>
     let patId=await req.body.patId;
     let accessToken=req.body.accessToken;
     let skipVal = req.body.page;
-
-    console.log("a",patId);
-    console.log("a",accessToken);
-    console.log("a",skipVal);
-
     let url="https://api.1up.health/fhir/dstu2/Patient/" + patId + "/$everything?_skip=" + skipVal ;
     if(patId && accessToken)
     {
 
         let result={};
         try{
-          let resultSet= await ResultList.find({accessToken: accessToken, patId: patId}, function (err)
+          let resultSet= await ResultList.findOne({accessToken: accessToken, patId: patId}, function (err,data)
           {
               if (err) console.log(err);
+              // return data
           }).exec();
-          //why is this returning an array ?????
-          if(resultSet.length>0)
+            console.log("data from db",resultSet );
+            if(resultSet)
           {
-              result=resultSet;
+              result=resultSet._doc.patientData;
           }
           else{
 
@@ -43,7 +39,7 @@ const findEverything = async (req, res, next)=>
                   if(err){
                       console.log(err);
                   }});
-              result=resultSet;
+              result=resultSet.data;
           }
         }
         catch (e) {
@@ -54,11 +50,10 @@ const findEverything = async (req, res, next)=>
             {
                 success: 'true',
                 message: 'patients retrieved successfully',
-                patients:result.data
+                patients:result
         });
     }
     else{
-        // create error list here
         console.log("patient not found")
     }
 };
