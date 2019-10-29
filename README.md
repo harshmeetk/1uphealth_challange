@@ -22,7 +22,7 @@ These components are needed to be installed if the project needs to be run local
 ---------
 
 1) CREATE NEW USER BY RUNNING :
- curl -X POST "https://api.1up.health/user-management/v1/user" -d "app_user_id=harshmee_v3" -d   "client_id=67c449669e5949e7896a7a3c0e7f77ad" -d "client_secret=tzO0NpqHRwd01G1RLspIQEZaV8wI0v4b"
+ curl -X POST "https://api.1up.health/user-management/v1/user" -d "app_user_id=harshmee_v6" -d   "client_id=67c449669e5949e7896a7a3c0e7f77ad" -d "client_secret=tzO0NpqHRwd01G1RLspIQEZaV8wI0v4b"
  
 2) AUTHORIZE THIS USER BY RUNNING :
 curl -X POST https://api.1up.health/fhir/oauth2/token -d "client_id=67c449669e5949e7896a7a3c0e7f77ad" -d "client_secret=tzO0NpqHRwd01G1RLspIQEZaV8wI0v4b" -d "code={{GENERATEDCODE}}" -d "grant_type=authorization_code"
