@@ -10,7 +10,7 @@ These components are installed:
 - Mongodb v4.2.1
 - Webstorm IDE or IntelliJ IDE 
 
-##Execution
+## Execution
 ---------
 There are two ways to execute the project : Create a new user and authorize test patient data to that user or refresh the access token of existing user and view EHR results for test patients 
 
