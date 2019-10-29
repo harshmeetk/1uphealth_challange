@@ -29,7 +29,8 @@
                     if (result.patients.length > 0)
                     {
                         vm.showAuthPats = true;
-                        vm.authPats = result.patients
+                        vm.authPats = result.patients;
+                        vm.error = undefined
                     }
                     else {
                         vm.error = result.errors

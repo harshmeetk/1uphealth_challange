@@ -1,7 +1,8 @@
 <div class="container background">
-    <h1  ng-show="model.showResults">Results</h1>
+    <h1  ng-show="model.showResults"> Showing EHR Results <h1 ng-repeat="item in model.patList" ng-bind-html="item"> {{item.name}} </h1> </h1>
     <ul class="list-group selfScroll">
-        <div ng-repeat="item in model.patList" ng-bind-html="item" class="list-group-item" class="accordion" id="accordionExample">
+        <div class="accordian">
+        <div ng-repeat="item in model.patList" ng-bind-html="item" class="list-group-item" id="accordionExample">
             <div class="card">
                 <div class="card-header" id="heading{{$index}}">
                     <h5 class="mb-0">
@@ -10,8 +11,9 @@
                         </button>
                     </h5>
                 </div>
+            </div>
 
-                <div id="collapse{{$index}}" class="collapse show" aria-labelledby="heading{{$index}}" data-parent="#accordionExample">
+                <div id="collapse{{$index}}" class="collapse" aria-labelledby="heading{{$index}}" data-parent="#accordionExample">
                     <div class="card-body">
                         <pre> {{item | json}} </pre>
                     </div>

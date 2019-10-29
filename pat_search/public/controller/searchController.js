@@ -71,10 +71,11 @@
             console.log(SearchService.getParams());
             vm.patList.accessToken = SearchService.getParams().accessToken;
             vm.patList.pId = SearchService.getParams().pId;
+            vm.patList.name = SearchService.getParams().name;
+            console.log("name" ,vm.patList.name);
             search(SearchService.getParams())
         }
 
         init()
     }
-   // }
 })();
