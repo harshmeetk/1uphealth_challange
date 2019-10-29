@@ -5,7 +5,7 @@
         .controller("searchController", searchController);
 
     function searchController(SearchService, $sce) {
-        var vm = this;
+        let vm = this;
         vm.search = search;
         vm.inc = inc;
         vm.dec = dec;
@@ -13,7 +13,6 @@
         vm.page = 0;
         vm.search_params = null;
         vm.patList = [];
-
         function search(patientToSearch) {
 
             vm.search_params = patientToSearch;
@@ -25,31 +24,14 @@
                         vm.error = undefined;
                         vm.show = undefined;
                         vm.showResults = true;
-                        // for (var tweet in tweets) {
-                        //     var temp = tweets[tweet].split(" ");
-                        //     var result = "";
-                        //     //Creating Dynamic hyperlinks for Hashtags and Mentions
-                        //     for (var t of temp) {
-                        //         if (t.startsWith("@") || t.startsWith("#")) {
-                        //             t = '<a id=' + t + ' onclick=tempFunction("'+t+'")>' + t + '</a>';
-                        //         }
-                        //         result = result + " " + t;
-                        //     }
-                        //     //using Angular to make it a trusted HTML for injection.
-                        //     tweets[tweet] = $sce.trustAsHtml(result.substring(1));
-                        // }
                         vm.patList = result.patients.entry;
-                        console.log(vm.pats)
-                        // const formatter = new JSONFormatter(vm.tweets);
-                        // document.body.appendChild(formatter.render());
+                        containsNextPage(result.patients.total);
+                        containsPrevtPage()
 
-
-                        // var obj = {a:1, 'b':'foo', c:[false,null, {d:{e:1.3e5}}]};
-                        // $scope.json = obj;
                     }
                     //No results found
                     else {
-                        vm.error = "No Results found :(";
+                        vm.error = result.error;
                     }
                 })
                 .error(function (error) {
@@ -57,6 +39,23 @@
                 })
         }
 
+        function containsNextPage(total) {
+            if(vm.page + 10 < total) {
+                vm.hasNext = true
+            }
+            else {
+                vm.hasNext = undefined
+            }
+        }
+
+        function containsPrevtPage() {
+            if(vm.page >= 10) {
+                vm.hasPrev = true
+            }
+            else {
+                vm.hasPrev = undefined
+            }
+        }
         function inc() {
             vm.page = vm.page + 10;
             search(vm.search_params)

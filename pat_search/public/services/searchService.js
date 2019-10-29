@@ -4,9 +4,9 @@
         .module("PatientSearch")
         .factory("SearchService",SearchService);
 
-    var patId = null
-    var accessToken = null
-    var name = null
+    let patId = null;
+    let accessToken = null
+    let name = null
     function SearchService($http) {
         var api={
             search:search,
@@ -18,7 +18,7 @@
 
         function setParams(patId, accessToken, name) {
             this.patId = patId;
-            this.accessToken = accessToken
+            this.accessToken = accessToken;
             this.name = name
         }
 

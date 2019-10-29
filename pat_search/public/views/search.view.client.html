@@ -6,7 +6,7 @@
                 <div class="card-header" id="heading{{$index}}">
                     <h5 class="mb-0">
                         <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{$index}}" aria-expanded="true" aria-controls="collapse{{$index}}">
-                            {{$index}}
+                            "Resource Type" : {{item.resource.resourceType}}
                         </button>
                     </h5>
                 </div>
@@ -23,25 +23,13 @@
         {{model.error}}
     </div>
     <nav>
-        <ul class="pagination">
-            <li class="page-item" ng-click="model.dec()"><a class="page-link" href="">Previous</a></li>
-            <li class="page-item" ng-click="model.inc()"
+        <ul class="pagination d-flex justify-content-center">
+            <li class="pull-left page-item " ng-show="model.hasPrev" ng-click="model.dec()"><a class="page-link" href="">Previous</a></li>
+            <li class="pull-right page-item " ng-show="model.hasNext" ng-click="model.inc()"
             ><a class="page-link" href="">Next</a></li>
         </ul>
     </nav>
     <script>
-        //This is work around for calling angular ng-click from onclick
-        function tempFunction(word) {
-            //changing hte value of searchbar and binding it using angulatJS adn JQUERY
-            var input=$('#searchBar')
-            input.val(word);
-            input.trigger('change');
-            var scope = angular.element(document.getElementById(word)).scope();
-            scope.$apply(function () {
-                var a = {searchWord:word}
-                scope.model.search(a);
-            });
-        }
     </script>
 </div>
 

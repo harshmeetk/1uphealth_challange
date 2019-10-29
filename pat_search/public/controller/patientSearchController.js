@@ -11,7 +11,7 @@
      * @param $location
      */
     function patientSearchController(SearchService, $sce, $location) {
-        var vm = this;
+        let vm = this;
         vm.search = search;
         vm.inc = inc;
         vm.dec = dec;
@@ -32,7 +32,7 @@
                         vm.authPats = result.patients
                     }
                     else {
-                        vm.error = "No Results found :(";
+                        vm.error = result.errors
                     }
                 })
                 .error(function (error) {

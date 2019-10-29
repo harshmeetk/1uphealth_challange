@@ -15,6 +15,10 @@ var ResultListSchema = new Schema({
         type: String,
         required: 'Kindly enter the patientId'
     },
+    page:{
+       type: String,
+       required:  'Kindly enter the page'
+    },
     patientData: Object
 });
 

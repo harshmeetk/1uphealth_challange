@@ -1,4 +1,5 @@
 const axios=require('axios');
+const constants = require("../../config/constants.json");
 
 
 const findAllAuthorizedPatients = async (req, res, next)=>
@@ -6,8 +7,8 @@ const findAllAuthorizedPatients = async (req, res, next)=>
     let accessToken=req.body.accessToken;
     let patientObject={};
     let patients=[];
-    console.log("a",accessToken);
     let url="https://api.1up.health/fhir/dstu2/Patient";
+    let errors={};
     if(accessToken)
     {
         let result={};
@@ -27,23 +28,20 @@ const findAllAuthorizedPatients = async (req, res, next)=>
 
             }
             else{
-                //TEST THIS TESTCASE
-                console.log("no patient found!");
+                errors.NO_PATIENT_FOUND= constants.NO_PATIENT_FOUND;
             }
         }
         catch (e) {
-            console.log("error list is"+ e
-            )
+            errors = e.message;
         }
-        res.send(
-            {
-                success: 'true',
-                message: 'patients retrieved successfully',
-                patients:patients
-            });
     }
     else{
-        console.log("Access Token has expired")
+        errors.SYSTEM_ERROR = constants.SYSTEM_ERROR
     }
+    res.send(
+        {
+            patients:patients,
+            errors : errors
+        });
 };
 module.exports=findAllAuthorizedPatients;
