@@ -23,7 +23,6 @@
             vm.pats = [];
             vm.search_params = patientToSearch;
             patientToSearch.page = vm.page;
-            //Use of promises here.
             SearchService.searchPatients(patientToSearch)
                 .success(function (result) {
                     if (result.patients.length > 0)

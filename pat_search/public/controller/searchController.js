@@ -4,6 +4,11 @@
         .module("PatientSearch")
         .controller("searchController", searchController);
 
+    /**
+     *
+     * @param SearchService
+     * @param $sce
+     */
     function searchController(SearchService, $sce) {
         let vm = this;
         vm.search = search;
@@ -13,6 +18,11 @@
         vm.page = 0;
         vm.search_params = null;
         vm.patList = [];
+
+        /**
+         *
+         * @param patientToSearch
+         */
         function search(patientToSearch) {
 
             vm.search_params = patientToSearch;
@@ -29,7 +39,6 @@
                         containsPrevtPage()
 
                     }
-                    //No results found
                     else {
                         vm.error = result.error;
                     }
@@ -39,6 +48,10 @@
                 })
         }
 
+        /**
+         *
+         * @param total
+         */
         function containsNextPage(total) {
             if(vm.page + 10 < total) {
                 vm.hasNext = true
@@ -72,7 +85,6 @@
             vm.patList.accessToken = SearchService.getParams().accessToken;
             vm.patList.pId = SearchService.getParams().pId;
             vm.patList.name = SearchService.getParams().name;
-            console.log("name" ,vm.patList.name);
             search(SearchService.getParams())
         }
 
