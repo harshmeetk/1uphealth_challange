@@ -12,9 +12,10 @@ These components are needed to be installed if the project needs to be run local
 
 
 ## To setup the project locally 
- - clone this repo to your local machine using 
+ - clone this repo to your local machine using git clone https://github.com/harshmeetk/1uphealth_challange.git
  - npm install
  - brew install mongodb-community@4.2
+ - open the project in the IDE and run node server
  
 
 ## Execution
