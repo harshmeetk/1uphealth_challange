@@ -1,14 +1,20 @@
 # 1uphealth_challange
 
------------
-Harshmeet Johal
+
+
 
 ## Installation
-------------
-These components are installed:
+
+These components are needed to be installed if the project needs to be run locally 
 - Node v12.6.0
 - Mongodb v4.2.1
 - Webstorm IDE or IntelliJ IDE 
+
+## Clone this repo to your local machine using 
+
+## Setup 
+ $ npm install
+ $ brew install mongodb-community@4.2
 
 ## Execution
 ---------
